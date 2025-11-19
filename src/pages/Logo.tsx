@@ -1,4 +1,4 @@
-import Navigation from "@/components/Navigation";
+import Sidebar from "@/components/Sidebar";
 import { Card } from "@/components/ui/card";
 import emuski from "@/assets/emuski-logo.jpg";
 

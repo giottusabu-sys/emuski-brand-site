@@ -1,4 +1,4 @@
-import Navigation from "@/components/Navigation";
+import Sidebar from "@/components/Sidebar";
 import { Card } from "@/components/ui/card";
 import { Zap, Cog, Package, Wrench } from "lucide-react";
 
