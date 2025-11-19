@@ -1,77 +1,43 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-import Navigation from "@/components/Navigation";
 import GridBackground from "@/components/GridBackground";
-import { Card } from "@/components/ui/card";
+import Sidebar from "@/components/Sidebar";
 
 const Index = () => {
   const sections = [
-    {
-      number: "01",
-      title: "Logo",
-      path: "/logo",
-      description: "Brand mark usage, clearspace, and variations",
-    },
-    {
-      number: "02",
-      title: "Typography",
-      path: "/typography",
-      description: "Typeface selection and hierarchy guidelines",
-    },
-    {
-      number: "03",
-      title: "Colors",
-      path: "/colors",
-      description: "Color palette and usage specifications",
-    },
-    {
-      number: "04",
-      title: "Brand Voice",
-      path: "/voice",
-      description: "Mission, vision, and communication principles",
-    },
-    {
-      number: "05",
-      title: "Engineering",
-      path: "/engineering",
-      description: "Cost estimation, VAVE, and sourcing services",
-    },
-    {
-      number: "06",
-      title: "Manufacturing",
-      path: "/manufacturing",
-      description: "Rapid prototyping and production capabilities",
-    },
+    { number: "01", title: "Logo", path: "/logo" },
+    { number: "02", title: "Typography", path: "/typography" },
+    { number: "03", title: "Color", path: "/colors" },
+    { number: "04", title: "Brand Voice", path: "/voice" },
+    { number: "05", title: "Engineering", path: "/engineering" },
+    { number: "06", title: "Manufacturing", path: "/manufacturing" },
   ];
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
-
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 overflow-hidden bg-gradient-to-br from-brand-navy via-brand-navy-light to-brand-teal">
-        <GridBackground />
-        <div className="container mx-auto relative z-10">
-          <div className="max-w-5xl">
-            <h1 className="text-7xl md:text-8xl lg:text-9xl font-bold text-white mb-8 leading-none tracking-tight">
+      <Sidebar />
+      
+      <main className="lg:ml-64">
+        {/* Hero Section */}
+        <section className="relative min-h-[60vh] flex items-center px-6 lg:px-12 overflow-hidden bg-gradient-to-br from-brand-navy via-brand-navy-light to-brand-teal">
+          <GridBackground />
+          <div className="relative z-10 max-w-5xl pt-20 lg:pt-0">
+            <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-light text-white leading-none tracking-tight mb-8">
               Brand
               <br />
               Guidelines
             </h1>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Introduction */}
-      <section className="py-20 px-6 bg-background">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid md:grid-cols-2 gap-12 items-start">
+        {/* Introduction */}
+        <section className="px-6 lg:px-12 py-20 max-w-7xl">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
+              <h2 className="text-3xl lg:text-4xl xl:text-5xl font-light text-foreground leading-tight">
                 Just like our technology, our brand is designed to constantly flex and grow.
               </h2>
             </div>
-            <div className="space-y-6 text-muted-foreground text-lg">
+            <div className="space-y-6 text-muted-foreground text-base lg:text-lg leading-relaxed">
               <p>
                 We are in a rapidly advancing field. The landscape shifts constantly. So our
                 brand—like our platform—is built to be a clear and consistent framework to hold
@@ -85,51 +51,41 @@ const Index = () => {
               </p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Contents */}
-      <section className="py-20 px-6 bg-secondary/30">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-2xl font-bold text-foreground mb-12">Contents</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {sections.map((section) => (
-              <Link key={section.path} to={section.path} className="group">
-                <Card className="p-8 h-full transition-all duration-300 hover:shadow-lg hover:border-primary hover:-translate-y-1 bg-card">
-                  <div className="space-y-4">
-                    <div className="flex items-start justify-between">
-                      <span className="text-5xl font-bold text-primary/20 group-hover:text-primary/40 transition-colors">
-                        {section.number}
-                      </span>
-                      <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors group-hover:translate-x-1 duration-300" />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                        {section.title}
-                      </h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
-                        {section.description}
-                      </p>
-                    </div>
+        {/* Contents */}
+        <section className="px-6 lg:px-12 py-20 bg-secondary/20">
+          <div className="max-w-7xl">
+            <h2 className="text-xl font-medium text-foreground mb-12">Contents</h2>
+            <div className="grid gap-0 divide-y divide-border">
+              {sections.map((section) => (
+                <Link
+                  key={section.path}
+                  to={section.path}
+                  className="group py-8 flex items-center justify-between hover:translate-x-2 transition-transform duration-300"
+                >
+                  <div className="flex items-center gap-8">
+                    <span className="text-6xl font-light text-primary/20 group-hover:text-primary/40 transition-colors w-24">
+                      {section.number}
+                    </span>
+                    <h3 className="text-3xl font-light text-foreground group-hover:text-primary transition-colors">
+                      {section.title}
+                    </h3>
                   </div>
-                </Card>
-              </Link>
-            ))}
+                  <svg
+                    className="w-6 h-6 text-muted-foreground group-hover:text-primary group-hover:translate-x-2 transition-all duration-300"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-12 px-6 bg-background border-t border-border">
-        <div className="container mx-auto max-w-6xl">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-muted-foreground text-sm">
-              © 2024 EMuski. Technology-Driven Engineering & Manufacturing Excellence.
-            </p>
-            <p className="text-muted-foreground text-sm">www.emuski.com</p>
-          </div>
-        </div>
-      </footer>
+        </section>
+      </main>
     </div>
   );
 };
